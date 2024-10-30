@@ -128,11 +128,12 @@
             color: #f8f8f2;
             font-size: 1rem;
             line-height: 1.5;
-            white-space: pre-wrap;
+            white-space: pre-wrap; /* Allows wrapping for better readability on mobile */
             border-left: 4px solid #4CAF50;
             margin: 0;
             max-height: 0;
-            overflow: hidden;
+            overflow-x: auto; /* Adds horizontal scroll for long lines */
+            overflow-y: hidden;
             transition: max-height 0.4s ease-in-out, opacity 0.3s;
             opacity: 0;
             border-radius: 5px;
@@ -189,6 +190,11 @@
 
             section h2 {
                 font-size: 1.5rem;
+            }
+
+            .accordion-item pre {
+                font-size: 0.9rem; /* Smaller font size for mobile readability */
+                padding: 0.8rem;
             }
         }
     </style>
