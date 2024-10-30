@@ -8,14 +8,15 @@
         /* Base styling */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f4f4f9;
             color: #333;
+            line-height: 1.6;
         }
 
         header {
@@ -25,12 +26,14 @@
             text-align: center;
             font-size: 1.8rem;
             text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .container {
             width: 85%;
             max-width: 1200px;
             margin: 1.5rem auto;
+            padding: 1rem;
             overflow: hidden;
         }
 
@@ -40,25 +43,26 @@
             padding: 0;
             background: #333;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
         }
 
         nav ul li {
-            display: inline;
+            margin: 0.5rem;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 10px 15px;
             display: inline-block;
             transition: background 0.3s;
+            border-radius: 5px;
         }
 
         nav ul li a:hover {
             background: #575757;
-            border-radius: 5px;
         }
 
         /* Section Styling */
@@ -68,18 +72,20 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         section:hover {
             transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
         section h2 {
             color: #4CAF50;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             text-transform: uppercase;
+            text-align: center;
         }
 
         /* Accordion styling */
@@ -91,17 +97,22 @@
             cursor: pointer;
             padding: 1rem;
             margin: 0;
-            background: #f4f4f4;
+            background: #e8e8e8;
             color: #333;
             font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             transition: background 0.3s ease;
-            position: relative;
+            border-radius: 5px;
+        }
+
+        .accordion-item h3:hover {
+            background: #d3d3d3;
         }
 
         .accordion-item h3::after {
             content: '▼';
-            position: absolute;
-            right: 1rem;
             font-size: 1.2rem;
             transition: transform 0.3s;
         }
@@ -113,20 +124,40 @@
         .accordion-item pre {
             display: none;
             padding: 1rem;
-            background: #f9f9f9;
-            font-size: 0.95rem;
+            background: #2e2e2e;
+            color: #f8f8f2;
+            font-size: 1rem;
             line-height: 1.5;
             white-space: pre-wrap;
             border-left: 4px solid #4CAF50;
             margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s;
+            opacity: 0;
+            border-radius: 5px;
         }
+
+        .accordion-item pre.visible {
+            display: block;
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        /* Syntax highlighting */
+        .keyword { color: #66d9ef; font-weight: bold; }
+        .datatype { color: #a6e22e; font-weight: bold; }
+        .function { color: #fd971f; }
+        .variable { color: #e6db74; }
+        .comment { color: #75715e; font-style: italic; }
+        .string { color: #e6db74; }
 
         /* Button Styling */
         .expand-all {
-            background-color: #333;
+            background-color: #4CAF50;
             color: #fff;
             padding: 0.5rem 1.2rem;
-            margin: 1rem 0;
+            margin: 1rem;
             cursor: pointer;
             border: none;
             border-radius: 4px;
@@ -134,7 +165,7 @@
         }
 
         .expand-all:hover {
-            background-color: #575757;
+            background-color: #3a9f3a;
         }
 
         /* Responsive design */
@@ -143,11 +174,25 @@
                 width: 95%;
             }
 
-            header, nav ul li a, section h2 {
+            header {
                 font-size: 1.4rem;
+            }
+
+            nav ul {
+                gap: 5px;
+            }
+
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
+
 </head>
 <body>
 
