@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Lab Exercises</title>
+    <style>
+        /* Base styling */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            overflow: hidden;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #575757;
+            border-radius: 5px;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        section h2 {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* Accordion styling */
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .accordion-item h3 {
+            cursor: pointer;
+            padding: 1rem;
+            margin: 0;
+            background: #f4f4f4;
+            color: #333;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+
+        .accordion-item h3::after {
+            content: '▼';
+            position: absolute;
+            right: 1rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .accordion-item h3.opened::after {
+            transform: rotate(-180deg);
+        }
+
+        .accordion-item pre {
+            display: none;
+            padding: 1rem;
+            background: #f9f9f9;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            border-left: 4px solid #4CAF50;
+            margin: 0;
+        }
+
+        /* Button Styling */
+        .expand-all {
+            background-color: #333;
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            margin: 1rem 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .expand-all:hover {
+            background-color: #575757;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            header, nav ul li a, section h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Java Lab Exercises</h1>
+</header>
+
+<div class="container">
+    <button class="expand-all" onclick="toggleAll(true)">Expand All Sections</button>
+    <button class="expand-all" onclick="toggleAll(false)">Collapse All Sections</button>
+
+    <nav>
+        <ul>
+            <li><a href="#exercise1">Exercise 1</a></li>
+            <li><a href="#exercise2">Exercise 2</a></li>
+            <li><a href="#exercise3">Exercise 3</a></li>
+            <li><a href="#exercise4">Exercise 4</a></li>
+            <li><a href="#exercise5">Exercise 5</a></li>
+            <li><a href="#exercise6">Exercise 6</a></li>
+            <li><a href="#exercise7">Exercise 7</a></li>
+            <li><a href="#exercise8">Exercise 8</a></li>
+            <li><a href="#exercise9">Exercise 9</a></li>
+        </ul>
+    </nav>
+
+    <!-- Exercise Sections -->
+    
+    <section id="exercise1">
+        <h2>Exercise 1: Basic Programs</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">1(a) Display Default Values of Primitive Types</h3>
+            <pre>
+                public class DefaultValues {
+                    static byte byteVal;
+                    static short shortVal;
+                    static int intVal;
+                    static long longVal;
+                    static float floatVal;
+                    static double doubleVal;
+                    static char charVal;
+                    static boolean boolVal;
+
+                    public static void main(String[] args) {
+                        System.out.println("Byte: " + byteVal);
+                        System.out.println("Short: " + shortVal);
+                        System.out.println("Int: " + intVal);
+                        System.out.println("Long: " + longVal);
+                        System.out.println("Float: " + floatVal);
+                        System.out.println("Double: " + doubleVal);
+                        System.out.println("Char: " + charVal);
+                        System.out.println("Boolean: " + boolVal);
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">1(b) Roots of a Quadratic Equation</h3>
+            <pre>
+                import java.util.Scanner;
+
+                public class QuadraticEquation {
+                    public static void main(String[] args) {
+                        Scanner sc = new Scanner(System.in);
+                        System.out.print("Enter a, b, c: ");
+                        double a = sc.nextDouble();
+                        double b = sc.nextDouble();
+                        double c = sc.nextDouble();
+                        
+                        double D = b * b - 4 * a * c;
+                        if (D > 0) {
+                            System.out.println("Roots are real and different.");
+                            System.out.println("Root 1: " + (-b + Math.sqrt(D)) / (2 * a));
+                            System.out.println("Root 2: " + (-b - Math.sqrt(D)) / (2 * a));
+                        } else if (D == 0) {
+                            System.out.println("Roots are real and equal.");
+                            System.out.println("Root: " + -b / (2 * a));
+                        } else {
+                            System.out.println("Roots are complex and different.");
+                        }
+                        sc.close();
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise2">
+        <h2>Exercise 2: Searching and Sorting</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">2(a) Binary Search</h3>
+            <pre>
+                import java.util.Arrays;
+
+                public class BinarySearch {
+                    public static void main(String[] args) {
+                        int[] arr = {10, 20, 30, 40, 50};
+                        int key = 30;
+                        int index = Arrays.binarySearch(arr, key);
+                        System.out.println("Element found at index: " + index);
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">2(b) Bubble Sort</h3>
+            <pre>
+                public class BubbleSort {
+                    public static void main(String[] args) {
+                        int[] arr = {64, 25, 12, 22, 11};
+                        int n = arr.length;
+                        for (int i = 0; i < n - 1; i++) {
+                            for (int j = 0; j < n - i - 1; j++) {
+                                if (arr[j] > arr[j + 1]) {
+                                    int temp = arr[j];
+                                    arr[j] = arr[j + 1];
+                                    arr[j + 1] = temp;
+                                }
+                            }
+                        }
+                        for (int element : arr) {
+                            System.out.print(element + " ");
+                        }
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">2(c) StringBuffer Operations</h3>
+            <pre>
+                                public class StringBufferExample {
+                    public static void main(String[] args) {
+                        StringBuffer sb = new StringBuffer("Hello World");
+                        sb.deleteCharAt(5);
+                        System.out.println("After deletion: " + sb);
+
+                        sb.replace(5, sb.length(), "Java");
+                        System.out.println("After replacement: " + sb);
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise3">
+        <h2>Exercise 3: Class, Overloading, and Constructor</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">3(a) Implementing Class Mechanism</h3>
+            <pre>
+                class Car {
+                    void start() {
+                        System.out.println("Car started");
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Car car = new Car();
+                        car.start();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">3(b) Method Overloading</h3>
+            <pre>
+                class OverloadExample {
+                    void print(int a) {
+                        System.out.println("Integer: " + a);
+                    }
+
+                    void print(String a) {
+                        System.out.println("String: " + a);
+                    }
+
+                    public static void main(String[] args) {
+                        OverloadExample example = new OverloadExample();
+                        example.print(5);
+                        example.print("Hello");
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">3(c) Constructor Implementation</h3>
+            <pre>
+                class Person {
+                    String name;
+
+                    Person(String name) {
+                        this.name = name;
+                    }
+
+                    void display() {
+                        System.out.println("Name: " + name);
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Person p = new Person("John");
+                        p.display();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">3(d) Constructor Overloading</h3>
+            <pre>
+                class Box {
+                    int width, height;
+
+                    Box() {
+                        width = 0;
+                        height = 0;
+                    }
+
+                    Box(int w, int h) {
+                        width = w;
+                        height = h;
+                    }
+
+                    void display() {
+                        System.out.println("Width: " + width + ", Height: " + height);
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Box box1 = new Box();
+                        Box box2 = new Box(5, 10);
+                        box1.display();
+                        box2.display();
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise4">
+        <h2>Exercise 4: Inheritance</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">4(a) Single Inheritance</h3>
+            <pre>
+                class Animal {
+                    void eat() {
+                        System.out.println("Animal eats");
+                    }
+                }
+
+                class Dog extends Animal {
+                    void bark() {
+                        System.out.println("Dog barks");
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Dog dog = new Dog();
+                        dog.eat();
+                        dog.bark();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">4(b) Multilevel Inheritance</h3>
+            <pre>
+                class Animal {
+                    void eat() {
+                        System.out.println("Animal eats");
+                    }
+                }
+
+                class Mammal extends Animal {
+                    void walk() {
+                        System.out.println("Mammal walks");
+                    }
+                }
+
+                class Dog extends Mammal {
+                    void bark() {
+                        System.out.println("Dog barks");
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Dog dog = new Dog();
+                        dog.eat();
+                        dog.walk();
+                        dog.bark();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">4(c) Abstract Class to Find Areas of Different Shapes</h3>
+            <pre>
+                abstract class Shape {
+                    abstract void area();
+                }
+
+                class Circle extends Shape {
+                    double radius = 5.0;
+
+                    void area() {
+                        System.out.println("Area of Circle: " + (3.14 * radius * radius));
+                    }
+                }
+
+                class Rectangle extends Shape {
+                    double length = 4.0;
+                    double breadth = 6.0;
+
+                    void area() {
+                        System.out.println("Area of Rectangle: " + (length * breadth));
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Shape circle = new Circle();
+                        circle.area();
+
+                        Shape rectangle = new Rectangle();
+                        rectangle.area();
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise5">
+        <h2>Exercise 5: Keywords and Polymorphism</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">5(a) Using “super” Keyword</h3>
+            <pre>
+                class Animal {
+                    String color = "White";
+                }
+
+                class Dog extends Animal {
+                    String color = "Black";
+
+                    void displayColor() {
+                        System.out.println("Dog color: " + color);
+                        System.out.println("Animal color: " + super.color);
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Dog dog = new Dog();
+                        dog.displayColor();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">5(b) Implementing Interface</h3>
+            <pre>
+                interface Animal {
+                    void sound();
+                }
+
+                class Dog implements Animal {
+                    public void sound() {
+                        System.out.println("Dog barks");
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Animal animal = new Dog();
+                        animal.sound();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">5(c) Runtime Polymorphism</h3>
+            <pre>
+                class Animal {
+                    void sound() {
+                        System.out.println("Animal makes a sound");
+                    }
+                }
+
+                class Dog extends Animal {
+                    void sound() {
+                        System.out.println("Dog barks");
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        Animal animal = new Dog(); // Upcasting
+                        animal.sound(); // Runtime polymorphism
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise6">
+        <h2>Exercise 6: Exception Handling</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">6(a) Basic Exception Handling</h3>
+            <pre>
+                public class ExceptionExample {
+                    public static void main(String[] args) {
+                        try {
+                            int division = 10 / 0;
+                            System.out.println("Result: " + division);
+                        } catch (ArithmeticException e) {
+                            System.out.println("Cannot divide by zero: " + e);
+                        }
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">6(b) Multiple Catch Clauses</h3>
+            <pre>
+                public class MultipleCatchExample {
+                    public static void main(String[] args) {
+                        try {
+                            int arr[] = new int[5];
+                            arr[5] = 10 / 0;
+                        } catch (ArithmeticException e) {
+                            System.out.println("Arithmetic Exception: " + e);
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            System.out.println("Array Index Out Of Bounds: " + e);
+                        }
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">6(c) User-Defined Exception</h3>
+            <pre>
+                class InvalidAgeException extends Exception {
+                    InvalidAgeException(String s) {
+                        super(s);
+                    }
+                }
+
+                public class TestCustomException {
+                    static void validate(int age) throws InvalidAgeException {
+                        if (age < 18)
+                            throw new InvalidAgeException("Not valid age to vote");
+                        else
+                            System.out.println("Welcome to vote");
+                    }
+
+                    public static void main(String args[]) {
+                        try {
+                            validate(13);
+                        } catch (Exception m) {
+                            System.out.println("Exception occurred: " + m);
+                        }
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise7">
+        <h2>Exercise 7: Threads</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">7(a) Creating Threads</h3>
+            <pre>
+                class FirstThread extends Thread {
+                    public void run() {
+                        while (true) {
+                            System.out.println("Good Morning");
+                            try { Thread.sleep(1000); } catch (InterruptedException e) {}
+                        }
+                    }
+                }
+
+                class SecondThread extends Thread {
+                    public void run() {
+                        while (true) {
+                            System.out.println("Hello");
+                            try { Thread.sleep(2000); } catch (InterruptedException e) {}
+                        }
+                    }
+                }
+
+                class ThirdThread extends Thread {
+                    public void run() {
+                        while (true) {
+                            System.out.println("Welcome");
+                            try { Thread.sleep(3000); } catch (InterruptedException e) {}
+                        }
+                    }
+                }
+
+                public class Main {
+                    public static void main(String[] args) {
+                        new FirstThread().start();
+                        new SecondThread().start();
+                        new ThirdThread().start();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">7(b) isAlive() and join()</h3>
+            <pre>
+                class ThreadExample extends Thread {
+                    public void run() {
+                        for (int i = 1; i <= 3; i++) {
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                System.out.println(e);
+                            }
+                            System.out.println(i);
+                        }
+                    }
+
+                    public static void main(String args[]) {
+                        ThreadExample t1 = new ThreadExample();
+                        ThreadExample t2 = new ThreadExample();
+                        t1.start();
+                        try {
+                            t1.join();
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                        t2.start();
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise8">
+        <h2>Exercise 8: Packages and JavaFX</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">8(a) Using User-Defined Packages</h3>
+            <pre>
+                // File: mypack/TestPackage.java
+                package mypack;
+
+                public class TestPackage {
+                    public void display() {
+                        System.out.println("This is a method from a user-defined package.");
+                    }
+                }
+
+                // Using the package in the main file
+                import mypack.TestPackage;
+
+                public class Main {
+                    public static void main(String[] args) {
+                        TestPackage tp = new TestPackage();
+                        tp.display();
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">8(b) JavaFX GUI Example</h3>
+            <pre>
+                import javafx.application.Application;
+                import javafx.scene.Scene;
+                import javafx.scene.control.Label;
+                import javafx.scene.image.Image;
+                import javafx.scene.image.ImageView;
+                import javafx.scene.layout.VBox;
+                import javafx.stage.Stage;
+
+                public class ImageViewExample extends Application {
+                    public void start(Stage stage) {
+                        Label label = new Label("Hello, JavaFX!");
+                        Image image = new Image("path_to_image.jpg"); // Provide a valid image path
+                        ImageView imageView = new ImageView(image);
+
+                        VBox vbox = new VBox(label, imageView);
+                        Scene scene = new Scene(vbox, 300, 300);
+                        
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+
+                    public static void main(String[] args) {
+                        launch(args);
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+    <section id="exercise9">
+        <h2>Exercise 9: JDBC</h2>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">9(a) Connecting to Database</h3>
+            <pre>
+                import java.sql.Connection;
+                import java.sql.DriverManager;
+                import java.sql.SQLException;
+
+                public class DatabaseConnect {
+                    public static void main(String[] args) {
+                        String url = "jdbc:mysql://localhost:3306/your_db";
+                        String user = "your_username";
+                        String password = "your_password";
+
+                        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+                            if (conn != null) {
+                                System.out.println("Connected to the database!");
+                            }
+                        } catch (SQLException e) {
+                            System.out.println("Connection failed: " + e.getMessage());
+                        }
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">9(b) Inserting Data into Database</h3>
+            <pre>
+                import java.sql.Connection;
+                import java.sql.DriverManager;
+                import java.sql.PreparedStatement;
+                import java.sql.SQLException;
+
+                public class InsertData {
+                    public static void main(String[] args) {
+                        String url = "jdbc:mysql://localhost:3306/your_db";
+                        String user = "your_username";
+                        String password = "your_password";
+                        
+                        String insertSQL = "INSERT INTO your_table (column1, column2) VALUES (?, ?)";
+
+                        try (Connection conn = DriverManager.getConnection(url, user, password);
+                             PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+
+                            pstmt.setString(1, "value1");
+                            pstmt.setString(2, "value2");
+                            pstmt.executeUpdate();
+
+                            System.out.println("Record inserted successfully!");
+                        } catch (SQLException e) {
+                            System.out.println("Error inserting record: " + e.getMessage());
+                        }
+                    }
+                }
+            </pre>
+        </div>
+        <div class="accordion-item">
+            <h3 onclick="toggleContent(this)">9(c) Deleting Data from Database</h3>
+            <pre>
+                import java.sql.Connection;
+                import java.sql.DriverManager;
+                import java.sql.PreparedStatement;
+                import java.sql.SQLException;
+
+                public class DeleteData {
+                    public static void main(String[] args) {
+                        String url = "jdbc:mysql://localhost:3306/your_db";
+                        String user = "your_username";
+                        String password = "your_password";
+                        
+                        String deleteSQL = "DELETE FROM your_table WHERE column1 = ?";
+
+                        try (Connection conn = DriverManager.getConnection(url, user, password);
+                             PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
+
+                            pstmt.setString(1, "value1");
+                            pstmt.executeUpdate();
+
+                            System.out.println("Record deleted successfully!");
+                        } catch (SQLException e) {
+                            System.out.println("Error deleting record: " + e.getMessage());
+                        }
+                    }
+                }
+            </pre>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    function toggleContent(element) {
+        const content = element.nextElementSibling;
+        const isOpen = content.style.display === 'block';
+        content.style.display = isOpen ? 'none' : 'block';
+        element.classList.toggle("opened", !isOpen);
+    }
+
+    function toggleAll(expand) {
+        const contents = document.querySelectorAll('.accordion-item pre');
+        const headers = document.querySelectorAll('.accordion-item h3');
+        contents.forEach(content => {
+            content.style.display = expand ? 'block' : 'none';
+        });
+        headers.forEach(header => {
+            header.classList.toggle("opened", expand);
+        });
+    }
+</script>
+
+</body>
+</html>
+
